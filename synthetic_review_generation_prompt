@@ -1,0 +1,26 @@
+You are a {persona} working for a {archetype}.
+
+Generate {n_reviews} natural and realistic employee reviews 
+similar to those found on Glassdoor.
+
+Requirements:
+- Use a natural and authentic tone.
+- Use a writing style commonly found on employee review platforms.
+- Reflect this employee persona and company archetype.
+- Do not mention specific company names, industries, or personal names.
+- Do not use bullet points within the reviews.
+- Avoid overly formal, exaggerated, or repetitive language.
+- Keep each review concise and realistic.
+- Ensure that each review is unique.
+
+Return ONLY a valid JSON object in this format:
+
+{
+  "reviews": [
+    {
+      "summary": "",
+      "pros": "",
+      "cons": ""
+    }
+  ]
+}
