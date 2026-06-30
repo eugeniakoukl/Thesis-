@@ -1,0 +1,25 @@
+You are analyzing employee reviews for the group: {group_name}.
+
+Your task is to extract employer branding insights from the reviews.
+
+Tasks:
+1. Identify the main recurring themes.
+2. Summarize the main strengths mentioned by employees.
+3. Summarize the main weaknesses mentioned by employees.
+4. Describe the overall sentiment.
+5. Provide a short employer branding interpretation.
+
+Reviews:
+{reviews_text}
+
+Return ONLY valid JSON in this format:
+
+{{
+  "group": "{group_name}",
+  "main_themes": [],
+  "strengths": [],
+  "weaknesses": [],
+  "overall_sentiment": "",
+  "employer_branding_interpretation": ""
+}}
+
