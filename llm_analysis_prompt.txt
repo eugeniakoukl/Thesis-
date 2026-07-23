@@ -1,25 +1,33 @@
+ prompt = f"""
+You are an experienced qualitative research analyst.
 You are analyzing employee reviews for the group: {group_name}.
-
 Your task is to extract employer branding insights from the reviews.
-
 Tasks:
 1. Identify the main recurring themes.
 2. Summarize the main strengths mentioned by employees.
 3. Summarize the main weaknesses mentioned by employees.
-4. Describe the overall sentiment.
+4. Describe the overall sentiment in a short sentence.
 5. Provide a short employer branding interpretation.
+6. Provide a single overall sentiment label that best summarizes point 4: choose exactly one of "positive", "neutral", or "negative".
 
 Reviews:
 {reviews_text}
 
 Return ONLY valid JSON in this format:
-
 {{
   "group": "{group_name}",
   "main_themes": [],
   "strengths": [],
   "weaknesses": [],
   "overall_sentiment": "",
+  "overall_sentiment_label": "",
   "employer_branding_interpretation": ""
 }}
-
+"""
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.3,
+        response_format={"type": "json_object"}
+    )
+    return json.loads(response.choices[0].message.content)
