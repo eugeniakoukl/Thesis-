@@ -1,7 +1,7 @@
+prompt = f"""
 You are a {persona} working for a {archetype}.
 
-Generate {n_reviews} natural and realistic employee reviews 
-similar to those found on Glassdoor.
+Generate {n_reviews} natural and realistic employee reviews similar to those found on Glassdoor.
 
 Requirements:
 - Use a natural and authentic tone.
@@ -15,12 +15,22 @@ Requirements:
 
 Return ONLY a valid JSON object in this format:
 
-{
+{{
   "reviews": [
-    {
+    {{
       "summary": "",
       "pros": "",
       "cons": ""
-    }
+    }}
   ]
-}
+}}
+"""
+
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.7,
+        response_format={"type": "json_object"}
+    )
+
+    return response.choices[0].message.content
